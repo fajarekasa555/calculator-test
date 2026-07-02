@@ -48,3 +48,15 @@
     </li>
   </ul>
 </span>
+
+## How to Run
+
+Open `index.html` directly in a browser. No build step required.
+
+## Implementation Notes
+
+- Data types are separated per file inside the `type/` folder
+- Calculation logic is inside `calculation/panel-properties.js`
+- `ShearAnalogyMethod` and `GammaMethod` extend `PanelProperties` base class
+- Shear Analogy: supports 3–9 layers, must be symmetric top to bottom
+- Gamma: supports 3 or 5 layers only, must be symmetric top to bottom

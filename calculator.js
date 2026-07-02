@@ -46,11 +46,23 @@ function readCLTLayupFromForm() {
   const length = parseFloat(document.getElementById('length').value);
   const analyticalMethod = document.querySelector('input[name="analyticalMethod"]:checked').value;
 
+  if (!beff || beff <= 0) {
+    throw new Error('beff must be a positive number.');
+  }
+  if (!length || length <= 0) {
+    throw new Error('Length / Span must be a positive number.');
+  }
+
   const rows = document.querySelectorAll('#layersContainer .layer-row');
   const layers = Array.from(rows).map((row, i) => {
     const thickness = parseFloat(row.querySelector('.layer-thickness').value);
     const orientation = parseInt(row.querySelector('.layer-orientation').value, 10);
     const grade = row.querySelector('.layer-grade').value;
+
+    if (!thickness || thickness <= 0) {
+      throw new Error(`Layer ${i + 1}: thickness must be a positive number.`);
+    }
+
     return new CLTLayerType(i + 1, thickness, orientation, grade);
   });
 
